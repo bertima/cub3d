@@ -108,7 +108,7 @@ fclean: clean
 re: fclean all
 
 norme:
-	@norminette $(LIBFT_DIR) $(SRC_CUB3D) cub3d.h
+	@norminette $(LIBFT_DIR) $(SRC_CUB3D) cub3d.h algo.h
 
 .PHONY: all clean fclean re norme%
 

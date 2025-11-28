@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 10:53:43 by cowillem          #+#    #+#             */
-/*   Updated: 2025/11/27 14:55:58 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:42:35 by bertrmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	size_window(t_cub *cub3d)
 {
 	char	*error_str;
 
-	cub3d->v->size_x = 2000;
-	cub3d->v->size_y = 2000;
+	cub3d->v->size_x = 1500;
+	cub3d->v->size_y = 1500;
 	error_str = "Size for window is minimum width : 200 height : 200";
 	if (cub3d->v->size_x < 200 || cub3d->v->size_y < 200)
 		return (error(cub3d, error_str, NULL));

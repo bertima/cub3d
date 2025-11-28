@@ -6,7 +6,7 @@
 /*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:17:48 by cowillem          #+#    #+#             */
-/*   Updated: 2025/11/27 14:49:48 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:57:32 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	up_move(t_cub *c)
 	else
 	{
 		nx = c->v->posx + (c->v->dirx * ((double)c->v->size / (double)5000)
-				* ((double)c->v->size / (double)1600));
+				* ((double)c->v->size / (double)1800));
 		ny = c->v->posy + (c->v->diry * ((double)c->v->size / (double)5000)
-				* ((double)c->v->size / (double)1600));
+				* ((double)c->v->size / (double)1800));
 	}
 	if (!is_wall(c, (float)nx, (float)c->v->posy, 1))
 		c->v->posx = nx;
@@ -80,9 +80,9 @@ void	down_move(t_cub *c)
 	else
 	{
 		nx = c->v->posx - (c->v->dirx * ((double)c->v->size / (double)5000)
-				* ((double)c->v->size / (double)1600));
+				* ((double)c->v->size / (double)1800));
 		ny = c->v->posy - (c->v->diry * ((double)c->v->size / (double)5000)
-				* ((double)c->v->size / (double)1600));
+				* ((double)c->v->size / (double)1800));
 	}
 	if (!is_wall(c, (float)nx, (float)c->v->posy, 1))
 		c->v->posx = nx;
@@ -105,9 +105,9 @@ void	left_move(t_cub *c)
 	else
 	{
 		nx = c->v->posx - (c->v->diry * ((double)c->v->size / (double)5000)
-				* ((double)c->v->size / (double)1600));
+				* ((double)c->v->size / (double)1800));
 		ny = c->v->posy + (c->v->dirx * ((double)c->v->size / (double)5000)
-				* ((double)c->v->size / (double)1600));
+				* ((double)c->v->size / (double)1800));
 	}
 	if (!is_wall(c, (float)nx, (float)c->v->posy, 1))
 		c->v->posx = nx;
@@ -130,9 +130,9 @@ void	right_move(t_cub *c)
 	else
 	{
 		nx = c->v->posx + (c->v->diry * ((double)c->v->size / (double)5000)
-				* ((double)c->v->size / (double)1600));
+				* ((double)c->v->size / (double)1800));
 		ny = c->v->posy - (c->v->dirx * ((double)c->v->size / (double)5000)
-				* ((double)c->v->size / (double)1600));
+				* ((double)c->v->size / (double)1800));
 	}
 	if (!is_wall(c, (float)nx, (float)c->v->posy, 1))
 		c->v->posx = nx;

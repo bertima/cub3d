@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:15:54 by bertrmar          #+#    #+#             */
-/*   Updated: 2025/11/27 17:41:06 by bertrmar         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:54:46 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	mini_map(t_cub *cub3d, int **map, int handle)
 	t_mini	mini;
 
 	mini.floor = 0xb5927e;
-	mini.fov = 0x030202;
-	mini.perso = 0xFF0000;
+	mini.fov = 0x000000;
+	mini.perso = 0xDC0700;
 	mini.wall = 0x826859;
 	mini.empty = 0xcccccc;
 	mini.border = 0x555555;

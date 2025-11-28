@@ -6,7 +6,7 @@
 /*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 11:25:46 by cowillem          #+#    #+#             */
-/*   Updated: 2025/11/27 14:39:30 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:13:47 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,41 @@ typedef struct s_draw		t_draw;
 
 struct s_v
 {
-	int		size_x; // taille de l'ecran
+	int		size_x; // size of screen
 	int		size_y;
 	int		size;
-	int		h; // hauteur qui represente la taille max de y;
-	int		w; // largeur qui represente la taille max de x;
+	int		h; // represent size max y;
+	int		w; // represent size max x;
 	int		**map;
 	double	posx; //x y start position
 	double	posy;
-	int		mapx; // posx en int
+	int		mapx; // posx in int
 	int		mapy;
-	double	dirx; // direction vector de base
+	double	dirx; // direction 1st vector
 	double	diry;
 	double	planex; // raycaster version of camera plane
 	double	planey;
-	double	fov; // (2 * atan(0.66/1.0) = 66 degree
-	double	wall_hit; // a quel endroit precis le mur a ete hit sur l'axe x
-	int		textx; // coordonne x de la texture
+	double	fov;
+	double	wall_hit; // the exact position where the wall was hit on x axis
+	int		textx; // coordinate x on the texture
 	int		texty;
-	double	step; // incrementation texture par pixel
+	double	step; // incrementation per pixel of the texture
 };
 
 struct s_cam
 {
 	double	camx; //x coordinate in camera space
-	double	raydirx; // direction du rayon
+	double	raydirx; // direction of the ray
 	double	raydiry;
-	double	sidedistx; // distance avant premier croisement sur l'axe
+	double	sidedistx; // distance before the first intersection on the axis
 	double	sidedisty;
-	double	deltadistx; // distance entre chaque croisement apres le 1er sur l'axe
+	double	deltadistx; // distance between each intersection on the axis
 	double	deltadisty;
-	double	pwalldist; // distance cam plane a mur
-	double	stepx; // recalcul direction du vecteur
+	double	pwalldist; // distance cam plane to wall
+	double	stepx; // recalculation of the direction of the vector
 	double	stepy;
-	int		line_s; // la taille de la ligne a dessiner
-	double	textpos; // position de la texture
+	int		line_s; // size of the line to draw
+	double	textpos; // position of the texture
 };
 
 struct s_flag

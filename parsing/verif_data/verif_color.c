@@ -6,7 +6,7 @@
 /*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 08:31:18 by bertrmar          #+#    #+#             */
-/*   Updated: 2025/11/26 09:21:22 by bertrmar         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:35:45 by bertrmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ static int	verif_len_color(t_cub *cub3d, char **str, int i, int j)
 static int	recup_rgb_value(t_cub *cub3d, char *val, int *tab)
 {
 	char	**str;
+	char	*error_str;
 
+	error_str = "Value in RGB superior to the max int";
 	str = ft_split(val, ',');
 	if (!str)
 		return (error(cub3d, "Malloc fail", NULL));
@@ -81,11 +83,11 @@ static int	recup_rgb_value(t_cub *cub3d, char *val, int *tab)
 	if (verif_len_color(cub3d, str, 0, 0))
 		return (ft_free_array(str), 1);
 	if (ft_atoi(str[0], &tab[0]))
-		return (error(cub3d, "Value in RGB superior to the max int", NULL));
+		return (ft_free_array(str), error(cub3d, error_str, NULL));
 	if (ft_atoi(str[1], &tab[1]))
-		return (error(cub3d, "Value in RGB superior to the max int", NULL));
+		return (ft_free_array(str), error(cub3d, error_str, NULL));
 	if (ft_atoi(str[2], &tab[2]))
-		return (error(cub3d, "Value in RGB superior to the max int", NULL));
+		return (ft_free_array(str), error(cub3d, error_str, NULL));
 	if (verif_range_color(cub3d, tab))
 		return (ft_free_array(str), 1);
 	return (ft_free_array(str), 0);
