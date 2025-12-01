@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:00:22 by bertrmar          #+#    #+#             */
-/*   Updated: 2025/11/28 09:16:15 by bertrmar         ###   ########.fr       */
+/*   Updated: 2025/12/01 11:39:53 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ struct	s_data
 	char			*ea;
 	char			*floor;
 	char			*ceiling;
+	int				start;
 };
 
 struct	s_keyhook

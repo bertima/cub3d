@@ -6,7 +6,7 @@
 /*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 11:25:46 by cowillem          #+#    #+#             */
-/*   Updated: 2025/11/28 14:13:47 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/12/01 11:47:23 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ struct s_cam
 	double	camx; //x coordinate in camera space
 	double	raydirx; // direction of the ray
 	double	raydiry;
-	double	sidedistx; // distance before the first intersection on the axis
-	double	sidedisty;
-	double	deltadistx; // distance between each intersection on the axis
-	double	deltadisty;
-	double	pwalldist; // distance cam plane to wall
-	double	stepx; // recalculation of the direction of the vector
-	double	stepy;
+	double	f_distx; // 1st distance before the 1st intersection on the axis
+	double	f_disty;
+	double	distx; // distance between each intersection on the axis
+	double	disty;
+	double	walldist; // distance cam plane to wall
+	double	vectorx; // recalculation of the direction of the vector
+	double	vectory;
 	int		line_s; // size of the line to draw
 	double	textpos; // position of the texture
 };
@@ -84,6 +84,7 @@ struct s_draw
 /* ~~~~~~~~~~~~~~~~~~~~~~~~ PARSING ~~~~~~~~~~~~~~~~~~~~~~~~ */
 void	add_vector(t_cub *c);
 void	free_vmap(int **map, int size);
+void	first_wall(t_cub *c);
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~ MATH ~~~~~~~~~~~~~~~~~~~~~~~~ */
 int		core_loop(t_cub	*c);

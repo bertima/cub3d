@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 11:36:58 by cowillem          #+#    #+#             */
-/*   Updated: 2025/11/27 14:41:08 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/12/01 12:54:27 by bertrmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,5 @@ void	add_vector(t_cub *c)
 	c->v->planey = 0;
 	initial_dir(c);
 	initial_pos(c);
+	first_wall(c);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alloc_struct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:39:24 by bertrmar          #+#    #+#             */
-/*   Updated: 2025/11/25 13:21:13 by bertrmar         ###   ########.fr       */
+/*   Updated: 2025/12/01 11:47:05 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,26 @@ int	alloc_struct(t_cub *cub3d)
 	if (alloc_next(cub3d))
 		return (1);
 	return (0);
+}
+
+void	first_wall(t_cub *c)
+{
+	int	i;
+	int	j;
+	int	current;
+
+	i = 0;
+	current = 0;
+	while (i < c->v->h)
+	{
+		j = 0;
+		while (c->v->map[i][j] != 1)
+			j++;
+		if (i == 0)
+			current = j;
+		else if (j < current)
+			current = j;
+		i++;
+	}
+	c->data->start = current;
 }

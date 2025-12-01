@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 10:53:43 by cowillem          #+#    #+#             */
-/*   Updated: 2025/11/28 14:42:35 by bertrmar         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:48:37 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static int	size_window(t_cub *cub3d)
 {
 	char	*error_str;
 
-	cub3d->v->size_x = 1500;
-	cub3d->v->size_y = 1500;
-	error_str = "Size for window is minimum width : 200 height : 200";
-	if (cub3d->v->size_x < 200 || cub3d->v->size_y < 200)
+	cub3d->v->size_x = 2000;
+	cub3d->v->size_y = 2000;
+	error_str = "Size for window is minimum width : 400 height : 400";
+	if (cub3d->v->size_x < 400 || cub3d->v->size_y < 400)
 		return (error(cub3d, error_str, NULL));
-	error_str = "Size for window is minimum width : 3500 height : 1000";
-	if (cub3d->v->size_x > 3500 || cub3d->v->size_y > 2000)
+	error_str = "Size for window is minimum width : 3000 height : 2000";
+	if (cub3d->v->size_x > 3000 || cub3d->v->size_y > 2000)
 		return (error(cub3d, error_str, NULL));
 	return (0);
 }
@@ -36,9 +36,9 @@ int	main(int ac, char **av)
 		return (error(NULL, "One file.cub requiert for program", NULL));
 	if (alloc_struct(&cub3d))
 		return (1);
-	if (recup_data(&cub3d, av[1]))
-		return (1);
 	if (size_window(&cub3d))
+		return (1);
+	if (recup_data(&cub3d, av[1]))
 		return (1);
 	add_vector(&cub3d);
 	cub3d.mlx->window = mlx_new_window(cub3d.mlx->mlx,

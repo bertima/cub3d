@@ -6,7 +6,7 @@
 /*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:56:12 by bertrmar          #+#    #+#             */
-/*   Updated: 2025/11/26 09:40:13 by bertrmar         ###   ########.fr       */
+/*   Updated: 2025/12/01 12:40:10 by bertrmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,22 @@ static int	verif_first_line(char *file, int i)
 	return (0);
 }
 
-static int	search_str(t_cub *cub3d, char **data, char *file)
+static int	verif_number_arg(t_cub *cub3d, char *file, int len)
+{
+	while (file[len])
+	{
+		if (!ft_isspace(file[len]))
+			return (error(cub3d, "Only 1 data requiert", NULL));
+		len++;
+	}
+	return (0);
+}
+
+static int	search_str(t_cub *cub3d, char **data, char *file, int count)
 {
 	int	len;
 	int	j;
-	int	count;
 
-	count = 0;
 	j = 0;
 	len = 0;
 	if (*data)
@@ -46,6 +55,8 @@ static int	search_str(t_cub *cub3d, char **data, char *file)
 		return (error(cub3d, "Space is requiert after data", NULL));
 	while (file[j + len] && !ft_isspace(file[j + len]))
 		len++;
+	if (verif_number_arg(cub3d, file, len + j))
+		return (1);
 	*data = ft_substr(file, j, len);
 	if (!(*data))
 		return (error(cub3d, "Malloc fail", NULL));
@@ -67,13 +78,13 @@ int	search_kind_str(t_cub *cub3d, t_data *data, char **file, int *i)
 	if (ft_strncmp(&file[*i][j], "", 1) == 0)
 		return (0);
 	else if (ft_strncmp(&file[*i][j], "NO", 2) == 0)
-		return (search_str(cub3d, &data->no, &file[*i][j + 2]));
+		return (search_str(cub3d, &data->no, &file[*i][j + 2], 0));
 	else if (ft_strncmp(&file[*i][j], "EA", 2) == 0)
-		return (search_str(cub3d, &data->ea, &file[*i][j + 2]));
+		return (search_str(cub3d, &data->ea, &file[*i][j + 2], 0));
 	else if (ft_strncmp(&file[*i][j], "SO", 2) == 0)
-		return (search_str(cub3d, &data->so, &file[*i][j + 2]));
+		return (search_str(cub3d, &data->so, &file[*i][j + 2], 0));
 	else if (ft_strncmp(&file[*i][j], "WE", 2) == 0)
-		return (search_str(cub3d, &data->we, &file[*i][j + 2]));
+		return (search_str(cub3d, &data->we, &file[*i][j + 2], 0));
 	else if (ft_strncmp(&file[*i][j], "F", 1) == 0)
 		return (recup_floor_ceiling(cub3d, &data->floor, &file[*i][j + 1],
 			&cub3d->draw->floor));

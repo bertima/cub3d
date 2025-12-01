@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
+/*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:15:54 by bertrmar          #+#    #+#             */
-/*   Updated: 2025/11/28 13:54:46 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/12/01 12:59:09 by bertrmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	draw_perso(t_cub *cub3d, double tile)
 	double	pos_y;
 
 	pos_x = ((cub3d->v->posx) * tile);
-	pos_y = ((cub3d->v->posy) * tile);
+	pos_y = ((cub3d->v->posy - cub3d->data->start) * tile);
 	if (cub3d->key->vue == 1)
 		fov_mini_map(cub3d, pos_x, pos_y, tile);
 	perso_pix(cub3d, pos_x, pos_y, tile);
@@ -60,7 +60,7 @@ void	draw_square(t_cub *cub3d, int x, int y, int color)
 		j = 0;
 		while (j <= pix_square)
 		{
-			if ((x == 0 || x == cub3d->v->w - 1)
+			if ((x == 0 || x == cub3d->v->w - cub3d->data->start - 1)
 				|| (y == 0 || y == cub3d->v->h - 1))
 				my_mlx_pixel_put(cub3d, (x * pix_square) + j,
 					(y * pix_square) + i, cub3d->mini->border);
@@ -68,8 +68,6 @@ void	draw_square(t_cub *cub3d, int x, int y, int color)
 				my_mlx_pixel_put(cub3d, (x * pix_square) + j,
 					(y * pix_square) + i, color);
 			j++;
-			my_mlx_pixel_put(cub3d, (x * pix_square) + j,
-				(y * pix_square) + i, cub3d->mini->border);
 		}
 		i++;
 	}
@@ -79,19 +77,21 @@ void	print_mini(t_cub *cub3d, int **map, t_mini *mini)
 {
 	int	x;
 	int	y;
+	int	start;
 
+	start = cub3d->data->start;
 	y = 0;
 	while (y < cub3d->v->h)
 	{
-		x = 0;
+		x = start;
 		while (x < cub3d->v->w)
 		{
 			if (map[y][x] == 1)
-				draw_square(cub3d, x, y, mini->wall);
+				draw_square(cub3d, x - start, y, mini->wall);
 			else if (map[y][x] == 0)
-				draw_square(cub3d, x, y, mini->floor);
+				draw_square(cub3d, x - start, y, mini->floor);
 			else
-				draw_square(cub3d, x, y, mini->empty);
+				draw_square(cub3d, x - start, y, mini->empty);
 			x++;
 		}
 		y++;

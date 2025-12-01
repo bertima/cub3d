@@ -6,7 +6,7 @@
 /*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:07:43 by cowillem          #+#    #+#             */
-/*   Updated: 2025/11/26 11:17:34 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/12/01 09:59:39 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ unsigned int	text_to_color(t_cub *c, int x, int y)
 void	do_wall(t_cub *c)
 {
 	if (c->flag->side == 0)
-		c->v->wall_hit = c->v->posy + c->cam->pwalldist * c->cam->raydiry;
+		c->v->wall_hit = c->v->posy + c->cam->walldist * c->cam->raydiry;
 	else
-		c->v->wall_hit = c->v->posx + c->cam->pwalldist * c->cam->raydirx;
+		c->v->wall_hit = c->v->posx + c->cam->walldist * c->cam->raydirx;
 	c->v->wall_hit -= floor(c->v->wall_hit);
 	c->v->textx = (int)(c->v->wall_hit * (double)(c->mlx->w));
 	if ((c->flag->side == 0 && c->cam->raydirx > 0)

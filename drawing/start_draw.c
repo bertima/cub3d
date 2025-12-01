@@ -6,7 +6,7 @@
 /*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:08:33 by cowillem          #+#    #+#             */
-/*   Updated: 2025/11/26 11:29:25 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:09:38 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ static void	realign_step(t_cub *c)
 	c->v->mapy = (int)c->v->posy;
 	if (c->cam->raydirx < 0)
 	{
-		c->cam->stepx = -1;
-		c->cam->sidedistx = ((c->v->posx) - c->v->mapx) * c->cam->deltadistx;
+		c->cam->vectorx = -1;
+		c->cam->f_distx = ((c->v->posx) - c->v->mapx) * c->cam->distx;
 	}
 	else
 	{
-		c->cam->stepx = 1;
-		c->cam->sidedistx = (c->v->mapx + 1 - c->v->posx) * c->cam->deltadistx;
+		c->cam->vectorx = 1;
+		c->cam->f_distx = (c->v->mapx + 1 - c->v->posx) * c->cam->distx;
 	}
 	if (c->cam->raydiry < 0)
 	{
-		c->cam->stepy = -1;
-		c->cam->sidedisty = (c->v->posy - c->v->mapy) * c->cam->deltadisty;
+		c->cam->vectory = -1;
+		c->cam->f_disty = (c->v->posy - c->v->mapy) * c->cam->disty;
 	}
 	else
 	{
-		c->cam->stepy = 1;
-		c->cam->sidedisty = (c->v->mapy + 1 - c->v->posy) * c->cam->deltadisty;
+		c->cam->vectory = 1;
+		c->cam->f_disty = (c->v->mapy + 1 - c->v->posy) * c->cam->disty;
 	}
 }
 
@@ -42,16 +42,16 @@ static void	vector_check_next(t_cub *c)
 {
 	while (c->flag->hit == 0)
 	{
-		if (c->cam->sidedistx < c->cam->sidedisty)
+		if (c->cam->f_distx < c->cam->f_disty)
 		{
-			c->cam->sidedistx += c->cam->deltadistx;
-			c->v->mapx += c->cam->stepx;
+			c->cam->f_distx += c->cam->distx;
+			c->v->mapx += c->cam->vectorx;
 			c->flag->side = 0;
 		}
 		else
 		{
-			c->cam->sidedisty += c->cam->deltadisty;
-			c->v->mapy += c->cam->stepy;
+			c->cam->f_disty += c->cam->disty;
+			c->v->mapy += c->cam->vectory;
 			c->flag->side = 1;
 		}
 		if (c->v->map[c->v->mapx][c->v->mapy] == 1)
@@ -65,8 +65,8 @@ static void	first_value(t_cub *c, int i, double w)
 	c->cam->camx = ((2 * i) / (double)(w - 1) - 1);
 	c->cam->raydirx = c->v->dirx + c->v->planex * c->cam->camx;
 	c->cam->raydiry = c->v->diry + c->v->planey * c->cam->camx;
-	c->cam->deltadistx = fabs(1 / c->cam->raydirx);
-	c->cam->deltadisty = fabs(1 / c->cam->raydiry);
+	c->cam->distx = fabs(1 / c->cam->raydirx);
+	c->cam->disty = fabs(1 / c->cam->raydiry);
 	c->flag->hit = 0;
 }
 
@@ -78,10 +78,10 @@ static void	to_wall(t_cub *c, int i, double w)
 		realign_step(c);
 		vector_check_next(c);
 		if (c->flag->side == 0)
-			c->cam->pwalldist = c->cam->sidedistx - c->cam->deltadistx;
+			c->cam->walldist = c->cam->f_distx - c->cam->distx;
 		else
-			c->cam->pwalldist = c->cam->sidedisty - c->cam->deltadisty;
-		c->cam->line_s = (int)(c->v->size_y / c->cam->pwalldist);
+			c->cam->walldist = c->cam->f_disty - c->cam->disty;
+		c->cam->line_s = (int)(c->v->size_y / c->cam->walldist);
 		c->draw->start = -c->cam->line_s / 2 + c->v->size_y / 2;
 		if (c->draw->start < 0)
 			c->draw->start = 0;
