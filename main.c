@@ -6,7 +6,7 @@
 /*   By: cowillem <cowillem@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 10:53:43 by cowillem          #+#    #+#             */
-/*   Updated: 2025/12/01 10:48:37 by cowillem         ###   ########.fr       */
+/*   Updated: 2025/12/05 14:48:37 by cowillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	size_window(t_cub *cub3d)
 {
 	char	*error_str;
 
-	cub3d->v->size_x = 2000;
-	cub3d->v->size_y = 2000;
+	cub3d->v->size_x = 1000;
+	cub3d->v->size_y = 1000;
 	error_str = "Size for window is minimum width : 400 height : 400";
 	if (cub3d->v->size_x < 400 || cub3d->v->size_y < 400)
 		return (error(cub3d, error_str, NULL));

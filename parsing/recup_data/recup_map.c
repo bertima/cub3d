@@ -6,7 +6,7 @@
 /*   By: bertrmar <bertrmar@student.42belgium.be    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 09:01:08 by bertrmar          #+#    #+#             */
-/*   Updated: 2025/11/26 11:25:45 by bertrmar         ###   ########.fr       */
+/*   Updated: 2025/12/08 10:27:21 by bertrmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	copie_map(char **temp, char *map, int j, int l)
 	{
 		if (map[j] == '\t')
 		{
-			space = j + l + 4;
+			space = (j + l) + (4 - ((j + l) % 4));
 			while (j + l < space)
 			{
 				(*temp)[j + l] = ' ';
