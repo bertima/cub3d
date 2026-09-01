@@ -1,4 +1,4 @@
-SRC_CUB3D	=	main.c \
+SRC_CUB3D	=	src/main.c \
 				$(KEYBOARD)/init_keyhook.c \
 				$(MINI)/mini_map.c $(MINI)/print_floor_ceiling.c $(MINI)/fov_mini_map.c \
 				$(MINI)/recup_tile.c $(MINI)/enlarge_map.c \
@@ -13,15 +13,15 @@ SRC_CUB3D	=	main.c \
 				$(DRAWING)/start_draw.c $(DRAWING)/rotation_utils.c $(DRAWING)/movement.c $(DRAWING)/wall.c \
 				$(DRAWING)/fps.c
 
-PARSING		= parsing
+PARSING		= src/parsing
 RECUP_DATA	= $(PARSING)/recup_data
 VERIF_DATA	= $(PARSING)/verif_data
-DRAWING 	= drawing
-KEYBOARD	= keyboard
-MINI		= mini_map
+DRAWING 	= src/drawing
+KEYBOARD	= src/keyboard
+MINI		= src/mini_map
 
 OBJ_CUB3D 	= $(addprefix $(OBJDIR)/, $(SRC_CUB3D:.c=.o))
-NAME   		= cub3d
+NAME   		= cub3D
 CC     		= cc
 CFLAGS 		= -Wall -Wextra -Werror -g
 
@@ -94,6 +94,7 @@ $(NAME): $(OBJ_CUB3D) $(LIBFT_A) $(PRINTF_A) $(MLX_LIB)
 "\033[38;2;4;164;54m   '----------------'  '----------------'  '----------------'     '----------------'  '----------------' \033[0m\n"
 
 clean:
+	@clear
 	@rm -rf $(OBJDIR)
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(MAKE) -C $(MLX_DIR) clean
